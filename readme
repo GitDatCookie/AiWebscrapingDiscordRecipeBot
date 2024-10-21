@@ -1,0 +1,6 @@
+## Setup
+1. Clone the repository.
+2. Create a `.env` file in the root directory and add the necessary environment variables as shown in `.env.example`.
+3. Create and activate a virtual environment.
+4. Install dependencies using `pip install -r requirements.txt`.
+5. Add geckodriver.exe in root directory
