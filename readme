@@ -3,4 +3,6 @@
 2. Create a `.env` file in the root directory and add the necessary environment variables as shown in `.env.example`.
 3. Create and activate a virtual environment.
 4. Install dependencies using `pip install -r requirements.txt`.
-5. Add geckodriver.exe in root directory
+5. Pull a LLM model from ollama. (better model equals better result)
+6. Add webbrowser driver in root directory
+7. Run discord_bot.py
