@@ -18,31 +18,17 @@ template = (
     "3. **Empty Response:** If no information matches the description, return an empty string ('')."
     "4. **Direct Data Only:** Your output should contain only the data that is explicitly requested, with no other text."
     "5. **Ignore Advertisements:** Exclude any information that is clearly an advertisement or promotional content."
-    "6. **Focus on Recipes:** Only include text related to cooking or baking recipes. Ignore blog comments, personal anecdotes, and non-recipe content."
-    "7. **Structured Recipe Components:** Ensure the output is structured with the recipe name, ingredients list, and preparation methods."
-    "8. **Preserve Paragraphs:** Maintain the original paragraphs and formatting, including any instructions within parentheses."
-    "9. **Exclude Irrelevant Keywords:** Exclude content with keywords like 'blog', 'story', 'personal', 'ad', or 'sponsored'."
-    "10. **Example Format:** Here's an example format: Name: [Recipe Name], Ingredients: [List Ingredients], Methods: [List Steps]."
-    "11. **Multiple Recipes:** If you detect multiple recipe headings, select the one that matches or is similar to the page title."
-    "13. **Length Constraints:** Ensure the extracted content fits within 2000 characters, trimming unnecessary details if necessary."
-    "14. **Sequential Extraction:** Follow this sequence: Identify title → Extract ingredients → Extract preparation steps."
-    "15. **Accurate Quantities:** Ensure that the quantities of ingredients match exactly as they appear on the webpage."
-    "16. **Primary Recipe Focus:** Focus solely on the primary recipe, often indicated by the most prominent heading or the page title."
-    "17. **HTML Table Handling:** Extract ingredient quantities and descriptions from HTML table rows (`<tr>`) within `<table>` tags."
-    "18. **Central Content Focus:** Prioritize content in the central section of the page, especially for blog posts, to avoid extracting irrelevant side content."
-    "19. **Content Density:** Focus on dense sections of text that typically contain the main recipe components, rather than dispersed information across the page."
 )
 
 # Description of what to parse
 parse_description = (
-    "Give me the recipe on this webpage."
-    "The Name of the recipe should be bold."
-    "Ingredients shouldn't be next to each other."
-    "If anything is structured in subparts, those parts should be preserved and they should be given separate paragraphs."
-    "Keep everything in the language of the site."
-    "Don't create new information, only use what is actualy there. Especially with ingredient quantities!"
-    "Focus on dense sections of text that typically contain the main recipe components, rather than dispersed information across the page."
-    "Ensure the lenght of the response is no longer than 2000 characters, trimming if needed."
+    "1. List the name of the Recipe found on this web page. If there are multiple recipes, only list the one that is most likely the main recipe, it is often found in <h1> tags, in the page title, or page adress. The main recipe is never found in <h3> or <h4> tags."
+    "2. List all ingredients found for the Recipe in step 1, with the correct quantities. The ingredients are often found in <li> tags. Ingredients are food items. If imperial units are used, convert to metric units. Don't make up ingredients or quantities."
+    "3. List all stepts for the preparation method found for the Recipe. The preparation method is commonly found after the ingredients. It is also commonly called instructions. If it contains temperature in Fahrenheit, convert to celsius. Don't make up steps. "
+    "4. Keep the original language of the website. For example: If it is written in english, your recipe should be english."
+    "5. Ignore information that is not part of the main recipe. Especially other recipes on the webpage, that are not complete with ingredients and preparation method. They are usually a linking element to another site."
+    "6. Make sure that you response containing the recipe is no longer than 2000 characters, trim if needed, but only trim the steps in the preparation method and if you have to trim, shorten it with keywords, so that no relevant information is getting lost."
+    "7. Ignore nutrician facts."
 )
  
 # Initialize the model and prompt template
